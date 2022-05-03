@@ -4,18 +4,18 @@ try {
     require_once 'dbconfig.php';
     if(isset($_POST['login-btn'])){
         
-        if(empty($_POST['user-emailaddress']) || empty($_POST['user-password'])){
+        if(empty($_POST['user-studentnum']) || empty($_POST['user-password'])){
 
             $message ="All fields are required";
             exit();
 
         }else{
-            $sql = "SELECT * FROM tblusers WHERE email =:emailaddress AND pass=:password";
+            $sql = "SELECT * FROM tblusers WHERE studentnumber =:sn AND pass=:ps";
             $userrow =$dbh->prepare($sql);
             $userrow->execute(
                 array(
-                    'emailaddress' => $_POST['user-emailaddress'],
-                    'password' => $_POST['user-password']
+                    'sn' => $_POST['user-studentnum'],
+                    'ps' => $_POST['user-password']
                 )
             );
             $count = $userrow->rowCount();
@@ -81,8 +81,8 @@ try {
                                 <form method="POST">
 
                                     <div class="mb-3">
-                                        <label for="emailaddress" class="form-label">Email address</label>
-                                        <input class="form-control" name="user-emailaddress" type="email" id="emailaddress" required="" placeholder="Enter your email">
+                                        <label for="studentnum" class="form-label">Student Number</label>
+                                        <input class="form-control" name="user-studentnum" type="text" id="studentnum" required="" placeholder="Enter your student number">
                                     </div>
 
                                     <div class="mb-3">
