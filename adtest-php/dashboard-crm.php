@@ -896,8 +896,8 @@
                                         <img src="assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
                                     </span>
                                     <span>
-                                        <span class="account-user-name">Soeng Souy</span>
-                                        <span class="account-position">Founder</span>
+                                    <?php echo "<span class='account-user-name'>".$_SESSION['user-fullname']."</span>"?>
+                                    <?php echo "<span class='account-position'>".$_SESSION['user-type']."</span>"?>
                                     </span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
@@ -1026,8 +1026,20 @@
                                 </div>
                             </div>
                         </div>     
-                        <!-- end page title --> 
-
+                        <!-- end page title -->
+                        <!-- Welcome Message Start  -->
+                        <?php
+                            if(isset($_SESSION['welcome'])){
+                                echo 
+                                " <div class='alert alert-success alert-dismissible bg-success text-white border-0 fade show' role='alert'>
+                                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                                    <strong>".$_SESSION['welcome']." ".$_SESSION['user-fullname']."! </strong> 
+                                </div>";
+                                unset($_SESSION['welcome']);
+                            }
+                        ?>
+                       
+                        <!-- Welcome Message End -->
                         <div class="row">
                             <div class="col-lg-6 col-xl-3">
                                 <div class="card">

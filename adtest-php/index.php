@@ -22,6 +22,9 @@ try {
             if($count > 0){
                 foreach($userrow as $result);
                 $_SESSION['userid'] = $result['id'];
+                $_SESSION['user-fullname'] = $result['fullname'];
+                $_SESSION['welcome'] = "Welcome back,";
+                $_SESSION['user-type'] = $result['type'];
                 header('location: dashboard-crm.php');
                 exit();
             }else{
@@ -40,7 +43,7 @@ try {
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Log In</title>
+        <title>Adtest Admin Panel</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
